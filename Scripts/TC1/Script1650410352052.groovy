@@ -1,3 +1,4 @@
+import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testobject.ConditionType
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
@@ -17,10 +18,11 @@ List<String> candidates = [
 	"//table[@id='th-l-workAreaMainTable']",
 	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']",
 	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[local-name()='grid']",
+	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[contains(text(), 'ID:']"
 	];	
 for (String locator in candidates) {	
-	TestObject to_leadId = makeTO(locator);
-	WebUI.verifyElementPresent(to_leadId, 5)
+	TestObject to = makeTO(locator);
+	WebUI.verifyElementPresent(to, 5, FailureHandling.CONTINUE_ON_FAILURE)
 }
 
 WebUI.closeBrowser();
