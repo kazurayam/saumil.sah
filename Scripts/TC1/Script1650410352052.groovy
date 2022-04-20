@@ -16,9 +16,7 @@ List<String> candidates = [
 	"//form[@id='myFormId']",
 	"//table[@id='th-l-workAreaMainTable']",
 	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']",
-	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//thtmlb:grid",
-	"//table[@id='th-l-workAreaMainTable']//grid[1]/gridcell[1]",
-	"//table[@id='th-l-workAreaMainTable']//tr[contains(text(),'General Data')]"
+	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[local-name()='grid']",
 	];	
 for (String locator in candidates) {	
 	TestObject to_leadId = makeTO(locator);
