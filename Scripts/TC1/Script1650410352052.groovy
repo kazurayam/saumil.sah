@@ -4,19 +4,26 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 
-File html = new File("terrible.html")
+File html = new File("Unified Lead_ 201481098, TA_UL_FU_OPP_HARMONY_ME_DIRECT, Test Company RD.05 - [SAP].mhtml")
 URL url = html.toURI().toURL();
 WebUI.openBrowser(url.toExternalForm());
 
-WebUI.verifyElementPresent(makeTO("//h1[@id='main']"),3);
 
 WebUI.switchToFrame(makeTO("//iframe[@id='CRMApplicationFrame']"), 5)
+WebUI.switchToFrame(makeTO("//frame[@id='WorkAreaFrame1']"), 5)
 
-WebUI.verifyElementPresent(makeTO("//h1[@id='ch1']"), 5)
-
-WebUI.switchToFrame(makeTO("//frame[@id='WorkAreaFrame1']"), 2)
-
-WebUI.verifyElementPresent(makeTO("//h1[@id='content']"), 5)
+List<String> candidates = [
+	"/html/body[@role='main']",
+	"//form[@id='myFormId']",
+	"//table[@id='th-l-workAreaMainTable']",
+	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']",
+	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[local-name()='grid']",
+	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[contains(text(), 'ID:']"
+	];
+for (String locator in candidates) {
+	TestObject to = makeTO(locator);
+	WebUI.verifyElementPresent(to, 5, FailureHandling.CONTINUE_ON_FAILURE)
+}
 
 WebUI.closeBrowser();
 
