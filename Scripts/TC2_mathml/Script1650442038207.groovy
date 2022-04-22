@@ -4,19 +4,19 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 
-File html = new File("terrible.html")
+File html = new File("mathml.html")
 URL url = html.toURI().toURL();
 WebUI.openBrowser(url.toExternalForm());
 
-WebUI.verifyElementPresent(makeTO("//h1[@id='main']"),3);
 
-WebUI.switchToFrame(makeTO("//iframe[@id='CRMApplicationFrame']"), 5)
-
-WebUI.verifyElementPresent(makeTO("//h1[@id='ch1']"), 5)
-
-WebUI.switchToFrame(makeTO("//frame[@id='WorkAreaFrame1']"), 2)
-
-WebUI.verifyElementPresent(makeTO("//h1[@id='content']"), 5)
+List<String> candidates = [
+	"/html/body",
+	"//*[local-name()='math']"
+	];
+for (String locator in candidates) {
+	TestObject to = makeTO(locator);
+	WebUI.verifyElementPresent(to, 2, FailureHandling.CONTINUE_ON_FAILURE)
+}
 
 WebUI.closeBrowser();
 
