@@ -25,14 +25,10 @@ WorkAreaFrame1 = contentFrameset.findElement(By.id("WorkAreaFrame1"))
 e = WorkAreaFrame1.getAttribute("name")
 println e
 
-
 myDriver.switchTo().frame(WorkAreaFrame1)
-
 WebElement el = myDriver.findElement(By.xpath("//td/div/span/label[normalize-space(.) = 'ID:']/parent::span/parent::div/parent::td/following-sibling::td[1]//span"))
-
 String val = el.getText()
 
-println val
-
+println val    // => 201481098
 
 myDriver.quit()
