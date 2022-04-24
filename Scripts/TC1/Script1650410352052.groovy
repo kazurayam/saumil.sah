@@ -17,8 +17,11 @@ List<String> candidates = [
 	"//form[@id='myFormId']",
 	"//table[@id='th-l-workAreaMainTable']",
 	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']",
-	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[local-name()='grid']",
-	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[contains(text(), 'ID:']"
+	
+	"//td/div/span/label[normalize-space(.) = 'ID:']/parent::span/parent::div/parent::td/following-sibling::td[@class='ch-grid-cell'])//span"
+	
+	// "//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[local-name()='grid']",
+	// "//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[contains(text(), 'ID:']"
 	];
 for (String locator in candidates) {
 	TestObject to = makeTO(locator);
