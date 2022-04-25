@@ -8,20 +8,17 @@ File html = new File("Unified Lead_ 201481098, TA_UL_FU_OPP_HARMONY_ME_DIRECT, T
 URL url = html.toURI().toURL();
 WebUI.openBrowser(url.toExternalForm());
 
-WebUI.switchToFrame(makeTO("//*[@id='CRMApplicationFrame']"), 5)
 
-WebUI.switchToFrame(makeTO("//*[@id='WorkAreaFrame1']"), 5)
+WebUI.switchToFrame(makeTO("//iframe[@id='CRMApplicationFrame']"), 5)
+WebUI.switchToFrame(makeTO("//frame[@id='WorkAreaFrame1']"), 5)
 
 List<String> candidates = [
 	"/html/body[@role='main']",
 	"//form[@id='myFormId']",
 	"//table[@id='th-l-workAreaMainTable']",
 	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']",
-	
-	"//td/div/span/label[normalize-space(.) = 'ID:']/parent::span/parent::div/parent::td/following-sibling::td[@class='ch-grid-cell'])//span"
-	
-	// "//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[local-name()='grid']",
-	// "//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[contains(text(), 'ID:']"
+	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[local-name()='grid']",
+	"//table[@id='th-l-workAreaMainTable']//div[@id='thtmlbOverviewPageBox']//*[contains(text(), 'ID:']"
 	];
 for (String locator in candidates) {
 	TestObject to = makeTO(locator);
